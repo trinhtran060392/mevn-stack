@@ -5,7 +5,8 @@ const morgan = require('morgan');
   cors = require('cors'),
   mongoose = require('mongoose'),
   { DB } = require('./config/DB'),
-  itemRoutes = require('./routes/item');
+  itemRoutes = require('./routes/item'),
+  movieRouters = require('./routes/movie');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(DB, { useMongoClient: true})
@@ -22,6 +23,7 @@ app.use(cors());
 
 // routes
 app.use('/items', itemRoutes);
+app.use('/movies', movieRouters);
 
 // static file
 app.use(express.static(path.join(__dirname, 'public')));

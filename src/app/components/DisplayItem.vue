@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import MovieService from './MoveService'
+import Constant from '../../config/Constant';
 export default {
   data(){
     return{
@@ -50,15 +52,21 @@ export default {
 
   created: function()
   {
-    this.fetchItems();
+    this.getMovies();
   },
 
   methods: {
-    fetchItems()
+    getMovies()
     {
-      let uri = 'http://localhost:4000/items';
+      let uri = `${Constant.entryPoint}list_movies.json?page=1&limit=1`;
       this.axios.get(uri).then((response) => {
-        this.items = response.data;
+        let result = response.data.data.movies
+        for (let i = 0; i < result.length; i++) {
+          let temp = result[i]
+          MovieService.create(temp).then((response) => {
+            console.log(response)
+          })
+        }
       });
     },
     deleteItem(id)
