@@ -1,0 +1,28 @@
+$yellow: #ffcc05;
+$white: #fff;
+$black: #000;
+$dark: #0E1623;
+$grey: #c8c8c8;
+$darken: #0a0e15;
+$gray: rgba(255, 255, 255, 0.8);
+
+img {
+    max-width: 100%;
+}
+.vod-content {
+    border: 5px solid #b0bec5;
+    border-radius: 5px;
+    &:hover {
+        border: 5px solid #ffcc05;
+    }
+    margin: 10px;
+}
+.pagination {
+    margin: 0 0 30px;
+}
+.mt-30 .pagination {
+    margin-top: 30px;
+}
+body {
+    background: $dark !important;
+}
