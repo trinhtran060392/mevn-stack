@@ -6,6 +6,10 @@ export default new Vue({
             let uri = `${Constant.api}movies/add`
             console.log(movie, uri)
             return this.axios.post(uri, movie)
+        },
+        get (page, limit) {
+            let uri = `${Constant.entryPoint}list_movies.json?page=${page}&limit=${limit}`
+            return this.axios.get(uri)
         }
     }
 })

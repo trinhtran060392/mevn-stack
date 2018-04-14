@@ -1,7 +1,7 @@
 const itemRoutes = require('express').Router();
 
 // Require Item model in our routes module
-var Item = require('../models/Item');
+var Item = require('../models/Movie');
 
 // Defined store route
 itemRoutes.route('/add').post((req, res, next) => {

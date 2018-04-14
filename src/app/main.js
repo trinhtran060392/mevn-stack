@@ -6,28 +6,27 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 Vue.use(VueAxios, axios);
 
+import store from './store';
 import App from './App.vue';
-import CreateItem from './components/CreateItem.vue';
-import DisplayItem from './components/DisplayItem.vue';
-import EditItem from './components/EditItem.vue';
+import Dashboard from './components/Dashboard.vue';
+import MainLayout from './components/MainLayout.vue';
 
 const routes = [
   {
-    name: 'DisplayItem',
     path: '/',
-    component: DisplayItem
-  },
-  {
-    name: 'CreateItem',
-    path: '/create/item',
-    component: CreateItem
-  },
-  {
-    name: 'EditItem',
-    path: '/edit/:id',
-    component: EditItem
+      component: MainLayout,
+      children: [
+        { path: '', component: Dashboard }
+      ]
   }
 ];
 
 const router = new VueRouter({ mode: 'history', routes: routes });
-new Vue(Vue.util.extend({ router }, App)).$mount('#app');
+
+new Vue({
+  el: '#app',
+  router,
+  store,
+  template: '<App/>',
+  components: { App }
+})
